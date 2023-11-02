@@ -1,11 +1,18 @@
 extends Camera2D
 
+const SMOOTHING = 10
 
+var target_position = Vector2.ZERO
 
 func _ready():
 	make_current()
 
 
-func _process(_delta):
+func _process(delta):
+	acquire_target()
+	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * SMOOTHING))
+
+
+func acquire_target():
 	var player = get_tree().get_first_node_in_group('player') as CharacterBody2D
-	global_position = player.global_position
+	target_position = player.global_position

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://banpesu35nbjn"]
+
+[ext_resource type="Script" path="res://scenes/enemies/grey_rat/grey_rat.gd" id="1_uvny7"]
+[ext_resource type="Texture2D" uid="uid://dbvkx7ecaat4e" path="res://assets/enemies/grey_rat.png" id="1_y0jtm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsknp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ueia5"]
+radius = 5.0
+
+[node name="GreyRat" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 0
+script = ExtResource("1_uvny7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_nsknp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_y0jtm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_ueia5")
