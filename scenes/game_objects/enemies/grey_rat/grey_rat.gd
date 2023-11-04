@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 75
+const MAX_SPEED = 50
 
-func _ready():
-	$Area2D.area_entered.connect(on_area_entered)
+@onready var health_component: HealthComponent = $HealthComponent
 
 
 func _process(delta):
@@ -14,12 +13,8 @@ func _process(delta):
 
 
 func get_direction_to_player() -> Vector2:
-	var player = get_tree().get_first_node_in_group('player') as CharacterBody2D
+	var player = get_tree().get_first_node_in_group('player') as Node2D
 	if player == null:
 		return Vector2.ZERO
 	
 	return (player.global_position - global_position).normalized()
-
-
-func on_area_entered(area: Area2D):
-	queue_free()
