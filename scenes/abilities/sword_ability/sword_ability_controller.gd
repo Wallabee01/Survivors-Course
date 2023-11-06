@@ -7,7 +7,8 @@ const MAX_SPEED_UPGRADE = 0.9
 
 @export var sword_ability: PackedScene
 
-var damage = 1
+var base_damage = 1
+var damage_upgrade = 0
 
 
 func _ready():
@@ -37,7 +38,7 @@ func on_timer_timeout():
 	
 	var sword_instance = sword_ability.instantiate() as SwordAbility
 	get_tree().get_first_node_in_group('foreground_layer').add_child(sword_instance)
-	sword_instance.hitbox_component.damage = damage
+	sword_instance.hitbox_component.damage = base_damage + damage_upgrade
 	
 	sword_instance.global_position = enemies[0].global_position
 	#TAU = 2 * PI, times 6 pixel radius
@@ -48,12 +49,12 @@ func on_timer_timeout():
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if upgrade.id != 'sword_speed':
-		return
-	
-	var percent_reduction = current_upgrades['sword_speed']['quantity'] * SPEED_UPGRADE_STRENGTH
-	if percent_reduction > MAX_SPEED_UPGRADE:
-		percent_reduction = MAX_SPEED_UPGRADE
-	$Timer.wait_time = BASE_WAIT_TIME * (1 - percent_reduction)
-	#wait_time can't be changed on a running timer, start() resets wait_time to new wait_time
-	$Timer.start()
+	if upgrade.id == 'sword_speed':
+		var percent_reduction = current_upgrades['sword_speed']['quantity'] * SPEED_UPGRADE_STRENGTH
+		if percent_reduction > MAX_SPEED_UPGRADE:
+			percent_reduction = MAX_SPEED_UPGRADE
+		$Timer.wait_time = BASE_WAIT_TIME * (1 - percent_reduction)
+		#wait_time can't be changed on a running timer, start() resets wait_time to new wait_time
+		$Timer.start()
+	elif upgrade.id == 'sword_damage':
+		damage_upgrade += 1

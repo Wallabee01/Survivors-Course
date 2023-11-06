@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://banpesu35nbjn"]
+[gd_scene load_steps=16 format=3 uid="uid://banpesu35nbjn"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/enemies/grey_rat/grey_rat.gd" id="1_uvny7"]
 [ext_resource type="Texture2D" uid="uid://dbvkx7ecaat4e" path="res://assets/enemies/grey_rat.png" id="1_y0jtm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://xqn3xho15nfs" path="res://scenes/components/death_component.tscn" id="4_08akl"]
 [ext_resource type="PackedScene" uid="uid://bvlc0fcgulj1d" path="res://scenes/components/hurtbox_component.tscn" id="4_fe2xj"]
 [ext_resource type="PackedScene" uid="uid://q1iygmn7oiwl" path="res://scenes/components/hit_flash_component.tscn" id="5_78urb"]
+[ext_resource type="Shader" path="res://resources/shaders/hit_flash.gdshader" id="6_3idi7"]
 
 [sub_resource type="Animation" id="Animation_arbeq"]
 length = 0.001
@@ -72,6 +73,11 @@ _data = {
 "walk": SubResource("Animation_jgmsy")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71wya"]
+resource_local_to_scene = true
+shader = ExtResource("6_3idi7")
+shader_parameter/lerp_percent = null
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_yuecb"]
 radius = 11.0
 
@@ -95,12 +101,13 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("2_nduxp")]
 
 [node name="ExpDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_f3uky")]
-drop_percent = 0.35
+drop_percent = 1.0
 health_component = NodePath("../HealthComponent")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_78urb")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_71wya")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_08akl")]
 health_component = NodePath("../HealthComponent")
