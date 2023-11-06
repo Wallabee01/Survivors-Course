@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/game_objects/drops/exp_vial.gd" id="1_uvtmr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjr6f"]
-radius = 16.0
+radius = 13.0384
 
 [node name="ExpVial" type="Node2D"]
 script = ExtResource("1_uvtmr")

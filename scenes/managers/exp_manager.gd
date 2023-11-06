@@ -3,10 +3,10 @@ extends Node
 signal exp_updated(current_exp: float, target_exp: float)
 signal level_up(new_level: int)
 
-const TARGET_EXP_GROWTH = 10
+const TARGET_EXP_GROWTH = 2
 
 var current_exp: float = 0
-var target_exp: float = 10
+var target_exp: float = 2
 var current_level: int = 0
 
 

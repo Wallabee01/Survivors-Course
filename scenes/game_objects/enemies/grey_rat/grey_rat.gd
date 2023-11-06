@@ -1,20 +1,14 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 50
-
-@onready var health_component: HealthComponent = $HealthComponent
+@onready var visuals: Node2D = $Visuals
+@onready var velocity_component: Node = $VelocityComponent
 
 
 func _process(delta):
 	#Movement
-	var direction = get_direction_to_player()
-	velocity = direction * MAX_SPEED
-	move_and_slide()
-
-
-func get_direction_to_player() -> Vector2:
-	var player = get_tree().get_first_node_in_group('player') as Node2D
-	if player == null:
-		return Vector2.ZERO
+	velocity_component.accelerate_to_player()
+	velocity_component.move(self)
 	
-	return (player.global_position - global_position).normalized()
+	var move_sign = sign(velocity.x)
+	if move_sign != 0:
+		visuals.scale = Vector2(-move_sign, 1)

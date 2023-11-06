@@ -6,23 +6,41 @@ const ACCELERATION_SMOOTHING = 25
 @onready var invulnerable_timer = $InvulnerableTimer as Timer
 @onready var health_component = $HealthComponent as HealthComponent
 @onready var health_bar = $HealthBar as ProgressBar
+@onready var abilities = $Abilities
+@onready var anim_player = $AnimationPlayer
+@onready var visuals = $Visuals
 
 var number_colliding_bodies = 0
+
 
 func _ready():
 	$DamageArea.body_entered.connect(on_body_entered)
 	$DamageArea.body_exited.connect(on_body_exited)
 	health_component.health_changed.connect(on_health_changed)
 	invulnerable_timer.timeout.connect(on_invulnerable_timer_timeout)
+	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	
 	update_health_display()
 
+
 func _process(delta):
 	#Movement
-	var direction = get_movement_vector()
+	var movement_vector = get_movement_vector()
+	var direction = movement_vector.normalized()
 	var target_velocity = direction * MAX_SPEED
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
+	
+	#Animation
+	if movement_vector.x != 0 || movement_vector.y != 0:
+		anim_player.play('walk')
+	else:
+		anim_player.play('RESET')
+	
+	#Flip player to match direction
+	var move_sign = sign(movement_vector.x)
+	if move_sign != 0:
+		visuals.scale = Vector2(move_sign, 1)
 
 
 func get_movement_vector() -> Vector2:
@@ -60,3 +78,10 @@ func on_invulnerable_timer_timeout():
 
 func on_health_changed():
 	update_health_display()
+
+
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+	if not ability_upgrade is Ability:
+		return
+	
+	abilities.add_child(ability_upgrade.ability_controller.instantiate())
