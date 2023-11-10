@@ -2,8 +2,13 @@ extends CharacterBody2D
 
 @onready var velocity_component: Node = $VelocityComponent
 @onready var visuals = $Visuals
+@onready var random_sfx_component = $RandomSFX2DComponent
 
 var is_moving: bool = false
+
+
+func _ready():
+	$HurtboxComponent.hit.connect(on_hit)
 
 
 func _process(delta):
@@ -22,3 +27,7 @@ func _process(delta):
 
 func set_is_moving(moving: bool):
 	is_moving = moving
+
+
+func on_hit():
+	random_sfx_component.play_random()

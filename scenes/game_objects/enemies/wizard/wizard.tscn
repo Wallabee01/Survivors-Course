@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://chsudoinm4s6b"]
+[gd_scene load_steps=17 format=3 uid="uid://chsudoinm4s6b"]
 
 [ext_resource type="PackedScene" uid="uid://dp554t2kijyr8" path="res://scenes/components/velocity_component.tscn" id="1_1rg66"]
 [ext_resource type="PackedScene" uid="uid://cbrbvmw31usi6" path="res://scenes/components/health_component.tscn" id="1_8pd5k"]
 [ext_resource type="Script" path="res://scenes/game_objects/enemies/wizard/wizard.gd" id="1_ne8m3"]
+[ext_resource type="PackedScene" uid="uid://ii5roowp2pya" path="res://scenes/components/random_sfx_2d_component.tscn" id="2_gjsct"]
 [ext_resource type="PackedScene" uid="uid://xqn3xho15nfs" path="res://scenes/components/death_component.tscn" id="2_k80ky"]
 [ext_resource type="PackedScene" uid="uid://ym11c7kd56i4" path="res://scenes/components/exp_drop_component.tscn" id="3_ecig3"]
 [ext_resource type="PackedScene" uid="uid://bvlc0fcgulj1d" path="res://scenes/components/hurtbox_component.tscn" id="3_hqu1w"]
@@ -90,7 +91,7 @@ _data = {
 "walk": SubResource("Animation_ttat2")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwrwi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqml7"]
 resource_local_to_scene = true
 shader = ExtResource("6_prqjh")
 shader_parameter/lerp_percent = null
@@ -112,6 +113,8 @@ libraries = {
 "": SubResource("AnimationLibrary_y2l1v")
 }
 
+[node name="RandomSFX2DComponent" parent="." instance=ExtResource("2_gjsct")]
+
 [node name="VelocityComponent" parent="." instance=ExtResource("1_1rg66")]
 max_speed = 60
 acceleration = 20.0
@@ -126,7 +129,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_hdb4x")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_pwrwi")
+hit_flash_material = SubResource("ShaderMaterial_nqml7")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_k80ky")]
 health_component = NodePath("../HealthComponent")

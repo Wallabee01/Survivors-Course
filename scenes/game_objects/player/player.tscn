@@ -1,9 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqfhix6sgu6r6"]
+[gd_scene load_steps=18 format=3 uid="uid://bqfhix6sgu6r6"]
 
 [ext_resource type="Texture2D" uid="uid://qba1bufu7tnx" path="res://assets/player/player.png" id="1_hpuku"]
 [ext_resource type="Script" path="res://scenes/game_objects/player/player.gd" id="1_rus71"]
 [ext_resource type="PackedScene" uid="uid://clxa1q2uvr3gi" path="res://scenes/abilities/sword_ability/sword_ability_controller.tscn" id="2_7d5fx"]
+[ext_resource type="PackedScene" uid="uid://ii5roowp2pya" path="res://scenes/components/random_sfx_2d_component.tscn" id="2_ducin"]
+[ext_resource type="PackedScene" uid="uid://dp554t2kijyr8" path="res://scenes/components/velocity_component.tscn" id="2_ntu6w"]
 [ext_resource type="PackedScene" uid="uid://cbrbvmw31usi6" path="res://scenes/components/health_component.tscn" id="2_sxsr4"]
+[ext_resource type="AudioStream" uid="uid://dxtlhbdpopbew" path="res://assets/audio/sfx/impacts/impactMining_000.ogg" id="3_22jq5"]
+[ext_resource type="AudioStream" uid="uid://0umreyxk14vw" path="res://assets/audio/sfx/impacts/impactMining_001.ogg" id="4_ahvka"]
+[ext_resource type="AudioStream" uid="uid://dknqxnqyollll" path="res://assets/audio/sfx/impacts/impactMining_002.ogg" id="5_sqy1y"]
+[ext_resource type="AudioStream" uid="uid://bir0607q3bwri" path="res://assets/audio/sfx/impacts/impactMining_003.ogg" id="6_wnbu6"]
+[ext_resource type="AudioStream" uid="uid://c1hsxj5hnsunn" path="res://assets/audio/sfx/impacts/impactMining_004.ogg" id="7_303e5"]
 
 [sub_resource type="Animation" id="Animation_th0v8"]
 length = 0.001
@@ -92,18 +99,6 @@ _data = {
 "walk": SubResource("Animation_hofa0")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0yn1"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-border_color = Color(0.247059, 0.14902, 0.192157, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66lg8"]
-bg_color = Color(0.262745, 0.882353, 0.701961, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.247059, 0.14902, 0.192157, 1)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_afb4b"]
 radius = 33.0
 
@@ -124,6 +119,13 @@ libraries = {
 "": SubResource("AnimationLibrary_qgh4v")
 }
 
+[node name="HitSFX2DComponent" parent="." instance=ExtResource("2_ducin")]
+streams = Array[AudioStream]([ExtResource("3_22jq5"), ExtResource("4_ahvka"), ExtResource("5_sqy1y"), ExtResource("6_wnbu6"), ExtResource("7_303e5")])
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_ntu6w")]
+max_speed = 90
+acceleration = 25.0
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_sxsr4")]
 max_health = 10.0
 
@@ -140,8 +142,6 @@ offset_top = -24.0
 offset_right = 16.0
 offset_bottom = -20.0
 pivot_offset = Vector2(16, 2)
-theme_override_styles/background = SubResource("StyleBoxFlat_y0yn1")
-theme_override_styles/fill = SubResource("StyleBoxFlat_66lg8")
 max_value = 1.0
 value = 0.5
 show_percentage = false

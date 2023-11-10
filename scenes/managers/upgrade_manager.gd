@@ -12,12 +12,13 @@ var axe_ability = preload("res://resources/upgrades/axe_ability.tres")
 var axe_damage_upgrade = preload("res://resources/upgrades/axe_damage.tres")
 var sword_speed_upgrade = preload("res://resources/upgrades/sword_speed.tres")
 var sword_damage_upgrade = preload("res://resources/upgrades/sword_damage.tres")
-
+var move_speed_upgrade = preload("res://resources/upgrades/move_speed.tres")
 
 func _ready():
-	upgrade_pool.add_item(axe_ability, 1000)
+	upgrade_pool.add_item(axe_ability, 10)
 	upgrade_pool.add_item(sword_speed_upgrade, 10)
 	upgrade_pool.add_item(sword_damage_upgrade, 10)
+	upgrade_pool.add_item(move_speed_upgrade, 5)
 	
 	exp_manager.level_up.connect(on_level_up)
 
@@ -35,7 +36,7 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 	if upgrade.max_quantity > 0:
 		var current_quantity = current_upgrades[upgrade.id]["quantity"]
 		if current_quantity == upgrade.max_quantity:
-			upgrade_pool = upgrade_pool.remove_item(upgrade)
+			upgrade_pool.remove_item(upgrade)
 	
 	update_upgrade_pool(upgrade)
 	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)

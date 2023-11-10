@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scenes/managers/exp_manager.gd" id="1_prs72"]
 
 [node name="ExpManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_prs72")

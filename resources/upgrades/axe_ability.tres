@@ -9,4 +9,4 @@ ability_controller = ExtResource("1_e4rg4")
 id = "axe_ability"
 max_quantity = 1
 name = "Axe Ability"
-description = "Sends out an axe that spirals away from tthe player."
+description = "Sends out an axe that spirals away from the player."
