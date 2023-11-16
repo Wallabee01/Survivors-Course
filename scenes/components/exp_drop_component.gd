@@ -10,6 +10,12 @@ func _ready():
 
 
 func on_died():
+	var adjusted_drop_percent = drop_percent
+	var exp_upgrade_quantity = MetaProgression.get_upgrade_quantity('exp_gain')
+	
+	if exp_upgrade_quantity > 0:
+		adjusted_drop_percent += (exp_upgrade_quantity * 0.1)
+	
 	if randf() > drop_percent:
 		return
 	

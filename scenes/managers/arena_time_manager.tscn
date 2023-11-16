@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxa2duorheikc"]
 
 [ext_resource type="Script" path="res://scenes/managers/arena_time_manager.gd" id="1_vsgis"]
-[ext_resource type="PackedScene" uid="uid://bxaa2dg4iyjil" path="res://scenes/ui/end_screen.tscn" id="2_ypsw8"]
+[ext_resource type="PackedScene" uid="uid://bxaa2dg4iyjil" path="res://scenes/ui/screens/end_screen.tscn" id="2_ypsw8"]
 
 [node name="ArenaTimeManager" type="Node"]
 script = ExtResource("1_vsgis")

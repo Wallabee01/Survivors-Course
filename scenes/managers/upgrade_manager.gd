@@ -13,9 +13,12 @@ var axe_damage_upgrade = preload("res://resources/upgrades/axe_damage.tres")
 var sword_speed_upgrade = preload("res://resources/upgrades/sword_speed.tres")
 var sword_damage_upgrade = preload("res://resources/upgrades/sword_damage.tres")
 var move_speed_upgrade = preload("res://resources/upgrades/move_speed.tres")
+var anvil_ability = preload("res://resources/upgrades/anvil_ability.tres")
+var anvil_count_upgrade = preload("res://resources/upgrades/anvil_count.tres")
 
 func _ready():
 	upgrade_pool.add_item(axe_ability, 10)
+	upgrade_pool.add_item(anvil_ability, 10)
 	upgrade_pool.add_item(sword_speed_upgrade, 10)
 	upgrade_pool.add_item(sword_damage_upgrade, 10)
 	upgrade_pool.add_item(move_speed_upgrade, 5)
@@ -43,8 +46,11 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 
 
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
-	if chosen_upgrade.id == axe_ability.id:
-		upgrade_pool.add_item(axe_damage_upgrade, 10)
+	match chosen_upgrade.id:
+		axe_ability.id:
+			upgrade_pool.add_item(axe_damage_upgrade, 10)
+		anvil_ability.id:
+			upgrade_pool.add_item(anvil_count_upgrade, 10)
 
 
 func pick_upgrades():

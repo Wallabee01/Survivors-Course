@@ -25,6 +25,10 @@ func _process(delta):
 		visuals.scale = Vector2(move_sign, 1)
 
 
+func get_collision_shape_offset():
+	return $CollisionShape2D.shape.radius/2
+
+
 func set_is_moving(moving: bool):
 	is_moving = moving
 

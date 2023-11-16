@@ -9,7 +9,6 @@ var save_data: Dictionary = {
 
 func _ready():
 	GameEvents.exp_collected.connect(on_exp_collected)
-	add_meta_upgrade(load("res://resources/meta_upgrades/exp_gain.tres"))
 	load_save_file()
 
 
@@ -33,6 +32,14 @@ func add_meta_upgrade(upgrade: MetaUpgrade):
 		}
 	#Increase quantity by 1 at upgrade.id in meta_upgrades
 	save_data['meta_upgrades'][upgrade.id]['quantity'] += 1
+
+
+func get_upgrade_quantity(upgrade_id: String):
+	if save_data['meta_upgrades'].has(upgrade_id):
+		return save_data['meta_upgrades'][upgrade_id]['quantity']
+	
+	return 0
+
 
 func on_exp_collected(value: float):
 	save_data['meta_upgrade_currency'] += value

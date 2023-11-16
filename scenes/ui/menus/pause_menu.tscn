@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh170mkcsbwcj"]
+[gd_scene load_steps=6 format=3 uid="uid://bh170mkcsbwcj"]
 
-[ext_resource type="Script" path="res://scenes/ui/pause_menu.gd" id="1_71q1k"]
-[ext_resource type="PackedScene" uid="uid://ctjsmc12luysp" path="res://scenes/ui/sound_button.tscn" id="4_m0hy3"]
-[ext_resource type="PackedScene" uid="uid://bj3rtyy45fyfc" path="res://scenes/ui/options_menu.tscn" id="5_fj8w6"]
+[ext_resource type="Script" path="res://scenes/ui/menus/pause_menu.gd" id="1_71q1k"]
+[ext_resource type="PackedScene" uid="uid://ctjsmc12luysp" path="res://scenes/ui/elements/sound_button.tscn" id="4_m0hy3"]
 
 [sub_resource type="Animation" id="Animation_uevbk"]
 length = 0.001
@@ -113,7 +112,3 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Quit To Menu
 "
-
-[node name="OptionsMenu" parent="." instance=ExtResource("5_fj8w6")]
-unique_name_in_owner = true
-visible = false

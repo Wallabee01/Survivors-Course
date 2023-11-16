@@ -32,7 +32,8 @@ func set_bus_volume_percent(bus_name: String, percent: float):
 
 
 func on_windowed_button_pressed():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
 
 func on_full_screen_button_pressed():
@@ -46,4 +47,4 @@ func on_audio_slider_changed(value: float, bus_name: String):
 func on_back_pressed():
 	SceneTransition.transition()
 	await SceneTransition.transitioned_halfway
-	visible = false
+	queue_free()

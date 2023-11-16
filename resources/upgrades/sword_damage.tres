@@ -7,4 +7,4 @@ script = ExtResource("1_hjoiv")
 id = "sword_damage"
 max_quantity = 0
 name = "Sword Attack Damage"
-description = "Sword attack damage increased by 1"
+description = "Sword attack damage increased by 1."

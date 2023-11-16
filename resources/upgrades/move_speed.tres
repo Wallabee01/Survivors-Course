@@ -7,4 +7,4 @@ script = ExtResource("1_qdohq")
 id = "move_speed"
 max_quantity = 10
 name = "Move Speed"
-description = "Player move speed increased by 10%"
+description = "Player move speed increased by 10%."

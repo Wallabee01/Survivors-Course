@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxaa2dg4iyjil"]
 
-[ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_bmpnl"]
-[ext_resource type="PackedScene" uid="uid://ctjsmc12luysp" path="res://scenes/ui/sound_button.tscn" id="2_81apa"]
+[ext_resource type="Script" path="res://scenes/ui/screens/end_screen.gd" id="1_bmpnl"]
+[ext_resource type="PackedScene" uid="uid://ctjsmc12luysp" path="res://scenes/ui/elements/sound_button.tscn" id="2_81apa"]
 [ext_resource type="PackedScene" uid="uid://bt4ulo4cdy2oq" path="res://scenes/components/random_sfx_component.tscn" id="2_i1l72"]
 [ext_resource type="AudioStream" uid="uid://bkel75yhws1do" path="res://assets/audio/sfx/jingles/victory_jingle.ogg" id="3_bwpax"]
 [ext_resource type="AudioStream" uid="uid://u7nst8yaavxx" path="res://assets/audio/sfx/jingles/defeat_jingle.ogg" id="4_i8xjo"]
@@ -133,12 +133,12 @@ vertical_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_81apa")]
+[node name="ContinueButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_81apa")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Restart"
+text = "Continue"
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_81apa")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Quit"
+text = "Quit to Menu"

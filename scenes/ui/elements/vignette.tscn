@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://btr6o8kw35edr"]
 
 [ext_resource type="Shader" path="res://resources/shaders/vignette.gdshader" id="1_2bv4a"]
-[ext_resource type="Script" path="res://scenes/ui/vignette.gd" id="1_3xfek"]
+[ext_resource type="Script" path="res://scenes/ui/elements/vignette.gd" id="1_3xfek"]
 
 [sub_resource type="Animation" id="Animation_57ply"]
 length = 0.001
@@ -96,6 +96,7 @@ shader_parameter/vignette_opacity = 0.159
 shader_parameter/vignette_rgb = Color(0.247059, 0.14902, 0.192157, 1)
 
 [node name="Vignette" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_3xfek")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

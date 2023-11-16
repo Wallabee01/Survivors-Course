@@ -7,4 +7,4 @@ script = ExtResource("1_gtdvk")
 id = "axe_damage"
 max_quantity = 0
 name = "Axe Attack Damage"
-description = "Axe attack damage increased by 1"
+description = "Axe attack damage increased by 1."
